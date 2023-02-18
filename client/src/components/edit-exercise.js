@@ -28,8 +28,8 @@ export const EditExercise = () => {
 
           axios.get(`http://localhost:5000/exercises/${id}`)
                .then((res) => {
-                    setExercise(prev=>({
-                      ...prev,
+                    setExercise((prev) => ({
+                         ...prev,
                          username: res.data.username,
                          description: res.data.description,
                          duration: res.data.duration,
@@ -73,10 +73,10 @@ export const EditExercise = () => {
           navigate("/exercises");
      };
      return (
-          <div>
-               <h1>Create a new </h1>
+          <div className='form-container'>
+               <h1>Edit User</h1>
                <form onSubmit={handleSubmit}>
-                    <div>
+                    <div className='form-div'>
                          <label htmlFor='exercise-username'>Username:</label>
                          <select name='username' onChange={handleChange}>
                               <option disabled>choose a user</option>
@@ -87,7 +87,7 @@ export const EditExercise = () => {
                               ))}
                          </select>
                     </div>
-                    <div>
+                    <div className='form-div'>
                          <label htmlFor='exercise-description'>
                               Description:
                          </label>
@@ -99,7 +99,7 @@ export const EditExercise = () => {
                               onChange={handleChange}
                          />
                     </div>
-                    <div>
+                    <div className='form-div'>
                          <label htmlFor='exercise-duration'>
                               Duration(in minutes):
                          </label>
@@ -111,7 +111,7 @@ export const EditExercise = () => {
                               onChange={handleChange}
                          />
                     </div>
-                    <div>
+                    <div className='form-div'>
                          <label htmlFor='exercise-date'>Date:</label>
                          <DatePicker
                               dateFormat='dd/MM/yyyy'
@@ -119,7 +119,7 @@ export const EditExercise = () => {
                               onChange={handleDateChange}
                          />
                     </div>
-                    <div>
+                    <div className='form-div'>
                          <button>Submit</button>
                     </div>
                </form>

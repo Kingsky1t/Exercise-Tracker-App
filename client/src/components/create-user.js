@@ -5,12 +5,15 @@ export const CreateUser = () => {
      const [user, setUser] = React.useState({
           username: "",
      });
+
      const handleChange = (e) => {
           setUser({ username: e.target.value });
      };
-     const handleSubmit = (e) => {
+
+     const handleSubmit = async (e) => {
           e.preventDefault();
-          axios.post("http://localhost:5000/users/add", user)
+          await axios
+               .post("http://localhost:5000/users/add", user)
                .then((res) => {
                     console.log(res);
                })
@@ -19,11 +22,16 @@ export const CreateUser = () => {
                });
           setUser({ username: "" });
      };
+
      return (
-          <div>
-               <h1>Create a New User</h1>
+          <div
+               style={{
+                    width: "90%",
+                    margin: "auto",
+               }}>
+               <h4>Create a New User</h4>
                <form onSubmit={handleSubmit}>
-                    <div>
+                    <article>
                          <label htmlFor='username'>Username:</label>
                          <input
                               id='users-username'
@@ -31,8 +39,12 @@ export const CreateUser = () => {
                               type='text'
                               onChange={handleChange}
                               value={user.username}
+                              style={{
+                                   fontSize: "",
+                                   lineHeight: "",
+                              }}
                          />
-                    </div>
+                    </article>
                     <div>
                          <button>Submit</button>
                     </div>

@@ -6,10 +6,11 @@ import { ExerciseList } from "./components/exercise-list";
 import { EditExercise } from "./components/edit-exercise";
 import { Navbar } from "./components/navbar";
 import { Home } from "./components/home";
+// import "./App.css"
 
 export const App = () => {
      return (
-          <div>
+          <div style={{ width: "70%", margin: "auto" }}>
                <Navbar />
                <Routes>
                     <Route path='/' element={<Home />} />

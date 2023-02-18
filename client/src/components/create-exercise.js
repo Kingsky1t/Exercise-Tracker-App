@@ -39,22 +39,23 @@ export const CreateExercise = () => {
                date: date,
           }));
      };
-     const handleSubmit = (e) => {
+     const handleSubmit = async (e) => {
           console.log(exercise);
           e.preventDefault();
-          axios.post("http://localhost:5000/exercises/add", {
-               username: exercise.username,
-               description: exercise.description,
-               duration: exercise.duration,
-               date: exercise.date,
-          })
+          await axios
+               .post("http://localhost:5000/exercises/add", {
+                    username: exercise.username,
+                    description: exercise.description,
+                    duration: exercise.duration,
+                    date: exercise.date,
+               })
                .then((res) => {
                     console.log(res);
                })
                .catch((err) => {
                     console.log(err);
                });
-          navigate("/exercises");
+          navigate("/");
      };
      return (
           <div>
@@ -63,7 +64,9 @@ export const CreateExercise = () => {
                     <div>
                          <label htmlFor='exercise-username'>Username:</label>
                          <select name='username' onChange={handleChange}>
-                              <option disabled>choose a user</option>
+                              <option disabled selected>
+                                   choose a user
+                              </option>
                               {exercise.users.map((item, i) => (
                                    <option key={i} value={item}>
                                         {item}
