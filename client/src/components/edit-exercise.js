@@ -15,7 +15,7 @@ export const EditExercise = () => {
           users: [],
      });
      React.useEffect(() => {
-          axios.get("http://localhost:5000/users")
+          axios.get("https://mern-app-backend-90hv.onrender.com/users")
                .then((res) => {
                     setExercise((prev) => ({
                          ...prev,
@@ -26,7 +26,9 @@ export const EditExercise = () => {
                     console.log(err);
                });
 
-          axios.get(`http://localhost:5000/exercises/${id}`)
+          axios.get(
+               `https://mern-app-backend-90hv.onrender.com/exercises/${id}`
+          )
                .then((res) => {
                     setExercise((prev) => ({
                          ...prev,
@@ -58,12 +60,15 @@ export const EditExercise = () => {
      const handleSubmit = (e) => {
           console.log(exercise);
           e.preventDefault();
-          axios.post(`http://localhost:5000/exercises/update/${id}`, {
-               username: exercise.username,
-               description: exercise.description,
-               duration: exercise.duration,
-               date: exercise.date,
-          })
+          axios.post(
+               `https://mern-app-backend-90hv.onrender.com/exercises/update/${id}`,
+               {
+                    username: exercise.username,
+                    description: exercise.description,
+                    duration: exercise.duration,
+                    date: exercise.date,
+               }
+          )
                .then((res) => {
                     console.log(res);
                })
@@ -73,10 +78,10 @@ export const EditExercise = () => {
           navigate("/exercises");
      };
      return (
-          <div className='form-container'>
+          <div>
                <h1>Edit User</h1>
                <form onSubmit={handleSubmit}>
-                    <div className='form-div'>
+                    <div>
                          <label htmlFor='exercise-username'>Username:</label>
                          <select name='username' onChange={handleChange}>
                               <option disabled>choose a user</option>
@@ -87,7 +92,7 @@ export const EditExercise = () => {
                               ))}
                          </select>
                     </div>
-                    <div className='form-div'>
+                    <div>
                          <label htmlFor='exercise-description'>
                               Description:
                          </label>
@@ -99,7 +104,7 @@ export const EditExercise = () => {
                               onChange={handleChange}
                          />
                     </div>
-                    <div className='form-div'>
+                    <div>
                          <label htmlFor='exercise-duration'>
                               Duration(in minutes):
                          </label>
@@ -111,7 +116,7 @@ export const EditExercise = () => {
                               onChange={handleChange}
                          />
                     </div>
-                    <div className='form-div'>
+                    <div>
                          <label htmlFor='exercise-date'>Date:</label>
                          <DatePicker
                               dateFormat='dd/MM/yyyy'
@@ -119,7 +124,7 @@ export const EditExercise = () => {
                               onChange={handleDateChange}
                          />
                     </div>
-                    <div className='form-div'>
+                    <div>
                          <button>Submit</button>
                     </div>
                </form>

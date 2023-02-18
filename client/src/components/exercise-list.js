@@ -6,7 +6,7 @@ export const ExerciseList = () => {
      const [exercises, setExercises] = React.useState([]);
 
      React.useEffect(() => {
-          axios.get("http://localhost:5000/exercises")
+          axios.get("https://mern-app-backend-90hv.onrender.com/exercises")
                .then((res) => {
                     setExercises(res.data);
                })
@@ -54,8 +54,7 @@ export const ExerciseList = () => {
                                                   <Link
                                                        style={{
                                                             padding: "0.3rem 0.5rem",
-                                                            margin:
-                                                                 "0.2rem",
+                                                            margin: "0.2rem",
                                                        }}
                                                        role='button'
                                                        to={`/exercises/update/${item._id}`}>
@@ -66,8 +65,7 @@ export const ExerciseList = () => {
                                                        role='button'
                                                        style={{
                                                             padding: "0.3rem 0.5rem",
-                                                            margin:
-                                                                 "0.2rem",
+                                                            margin: "0.2rem",
                                                        }}
                                                        onClick={() => {
                                                             handleDelete(

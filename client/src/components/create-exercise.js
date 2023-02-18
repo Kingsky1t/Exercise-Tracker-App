@@ -14,7 +14,7 @@ export const CreateExercise = () => {
           users: [],
      });
      React.useEffect(() => {
-          axios.get("http://localhost:5000/users")
+          axios.get("https://mern-app-backend-90hv.onrender.com/users")
                .then((res) => {
                     setExercise((prev) => ({
                          ...prev,
@@ -43,12 +43,15 @@ export const CreateExercise = () => {
           console.log(exercise);
           e.preventDefault();
           await axios
-               .post("http://localhost:5000/exercises/add", {
-                    username: exercise.username,
-                    description: exercise.description,
-                    duration: exercise.duration,
-                    date: exercise.date,
-               })
+               .post(
+                    "https://mern-app-backend-90hv.onrender.com/exercises/add",
+                    {
+                         username: exercise.username,
+                         description: exercise.description,
+                         duration: exercise.duration,
+                         date: exercise.date,
+                    }
+               )
                .then((res) => {
                     console.log(res);
                })
